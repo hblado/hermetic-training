@@ -1,0 +1,23 @@
+meta {
+  name: Create
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/exercises
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+body:json {
+  {
+    "title": "Deadlift",
+    "videoLink": "https://teste.com",
+    "tags": ["leGs", "Back"]
+  }
+}

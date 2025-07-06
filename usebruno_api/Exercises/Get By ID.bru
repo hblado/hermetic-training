@@ -1,0 +1,15 @@
+meta {
+  name: Get By ID
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{host}}/exercises/9
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}

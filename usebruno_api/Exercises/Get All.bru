@@ -1,0 +1,28 @@
+meta {
+  name: Get All
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{host}}/exercises?limit=5&offset=0
+  body: none
+  auth: bearer
+}
+
+params:query {
+  limit: 5
+  offset: 0
+}
+
+auth:bearer {
+  token: {{auth_token}}
+}
+
+body:json {
+  {
+    "title": "Deadlift",
+    "videoLink": "https://teste.com",
+    "tags": ["leGs", "Back"]
+  }
+}

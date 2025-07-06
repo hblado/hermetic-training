@@ -6,11 +6,12 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { ExercisesModule } from './exercises/exercises.module';
 
 @Module({
   imports: [
     JwtModule.register({
-      secret: 'abc123',
+      secret: process.env.JWT_SECRET,
       signOptions: {expiresIn: '1d'}
     }),
     ConfigModule.forRoot({ isGlobal: true }),
@@ -22,10 +23,12 @@ import { JwtModule } from '@nestjs/jwt';
       username: process.env.POSTGRES_USER,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       database: process.env.POSTGRES_DATABASE,
-      synchronize: true
+      synchronize: true,
+      logging: false
     }),
     AuthModule,
-    UsersModule
+    UsersModule,
+    ExercisesModule
   ],
   controllers: [AppController],
   providers: [AppService],
